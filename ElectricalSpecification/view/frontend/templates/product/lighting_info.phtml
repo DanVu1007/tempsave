@@ -1,0 +1,22 @@
+<?php
+
+/** @var \OmnyfyCustomzation\ElectricalSpecification\Block\TabInfo\LightingInfo $block */
+$electricSpecs = $block->getLightAttributes();
+?>
+<?php if ($block->checkTabDisplay()) : ?>
+    <div class="additional-attributes-wrapper table-wrapper">
+        <table class="data table additional-attributes" id="product-attribute-specs-table">
+            <tbody>
+                <?php foreach ($electricSpecs as $specsDetails) : ?>
+                    <?php if ($block->getAttributeValue($specsDetails)) :; ?>
+                        <tr>
+                            <th class="col label" scope="row"><?= $block->getAttributeLabel($specsDetails) ?></th>
+                            <td class="col data" data-th="<?= $specsDetails ?>"><?= $block->getAttributeValue($specsDetails) ?></td>
+                        </tr>
+                    <?php endif; ?>
+
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+<?php endif; ?>

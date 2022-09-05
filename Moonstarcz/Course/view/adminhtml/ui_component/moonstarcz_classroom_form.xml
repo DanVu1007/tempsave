@@ -1,0 +1,262 @@
+<?xml version="1.0" ?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">moonstarcz_classroom_form.moonstarcz_classroom_listing_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">General Information</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="back" class="Moonstarcz\Course\Block\Adminhtml\Moonstarcz\MoonstarczClass\Edit\BackButton"/>
+            <button name="delete" class="Moonstarcz\Course\Block\Adminhtml\Moonstarcz\MoonstarczClass\Edit\DeleteButton"/>
+            <button name="save" class="Moonstarcz\Course\Block\Adminhtml\Moonstarcz\MoonstarczClass\Edit\SaveButton"/>
+            <button name="save_and_continue" class="Moonstarcz\Course\Block\Adminhtml\Moonstarcz\MoonstarczClass\Edit\SaveAndContinueButton"/>
+        </buttons>
+        <namespace>moonstarcz_classroom_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>moonstarcz_classroom_form.moonstarcz_classroom_listing_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="moonstarcz_classroom_listing_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="moonstarcz/classroom/save"/>
+        </settings>
+        <dataProvider name="moonstarcz_classroom_listing_data_source" class="Moonstarcz\Course\Model\Moonstarczclass\DataProvider">
+            <settings>
+                <requestFieldName>entity_id</requestFieldName>
+                <primaryFieldName>entity_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="general">
+        <settings>
+            <label/>
+        </settings>
+
+        <field name="status" sortOrder="10" formElement="checkbox">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">moonstarcz_class</item>
+                    <item name="default" xsi:type="number">1</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>boolean</dataType>
+                <label translate="true">Enable Class</label>
+                <dataScope>status</dataScope>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="number">0</map>
+                            <map name="true" xsi:type="number">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+        <field name="name" sortOrder="20" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">moonstarcz_class</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Class Name</label>
+                <dataScope>name</dataScope>
+            </settings>
+        </field>
+
+        <field name="start_date" sortOrder="30" formElement="date">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">moonstarcz_class</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="validate-date" xsi:type="boolean">true</rule>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                    <rule name="validate-start-date" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Start Date</label>
+                <visible>true</visible>
+                <dataScope>start_date</dataScope>
+            </settings>
+        </field>
+
+        <field name="end_date" sortOrder="40" formElement="date">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">moonstarcz_class</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="validate-date" xsi:type="boolean">true</rule>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                    <rule name="validate-end-date" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">End Date</label>
+                <visible>true</visible>
+                <dataScope>end_date</dataScope>
+            </settings>
+        </field>
+
+        <field name="start_time" sortOrder="41">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Start Time</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">date</item>
+                    <item name="dataScope" xsi:type="string">start_time</item>
+                    <item name="component" xsi:type="string">Moonstarcz_Course/js/form/element/time</item>
+                    <item name="options" xsi:type="array">
+                        <item name="controlType" xsi:type="string">select</item>
+                        <item name="timeOnlyTitle" xsi:type="string">Select Start Time</item>
+                        <item name="showsTime" xsi:type="boolean">true</item>
+                        <item name="timeOnly" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                    <rule name="validate-start-time" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+
+        <field name="end_time" sortOrder="42">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">End Time</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">date</item>
+                    <item name="dataScope" xsi:type="string">end_time</item>
+                    <item name="component" xsi:type="string">Moonstarcz_Course/js/form/element/time</item>
+                    <item name="options" xsi:type="array">
+                        <item name="controlType" xsi:type="string">select</item>
+                        <item name="timeOnlyTitle" xsi:type="string">Select End Time</item>
+                        <item name="showsTime" xsi:type="boolean">true</item>
+                        <item name="timeOnly" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                    <rule name="validate-end-time" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+        
+        <field name="max_student" sortOrder="50" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">moonstarcz_class</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                    <rule name="validate-number" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>number</dataType>
+                <label translate="true">Max Students</label>
+                <dataScope>max_student</dataScope>
+            </settings>
+        </field>
+
+        <field name="total_lesson" sortOrder="60" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">moonstarcz_class</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                    <rule name="validate-number" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>number</dataType>
+                <label translate="true">Total Lessons</label>
+                <dataScope>total_lesson</dataScope>
+            </settings>
+        </field>
+
+        <!-- Type Class -->
+        <field name="type_class">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Moonstarcz\Course\Model\Config\Source\TypeClass</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Type Class</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="source" xsi:type="string">moonstarcz_class</item>
+                    <item name="dataScope" xsi:type="string">type_class</item>
+                    <item name="sortOrder" xsi:type="number">61</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+
+        <field name="course_id">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Moonstarcz\Course\Model\Config\Source\Course</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Course</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="source" xsi:type="string">moonstarcz_class</item>
+                    <item name="dataScope" xsi:type="string">course_id</item>
+                    <item name="sortOrder" xsi:type="number">70</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+
+        <field name="teacher_id">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Moonstarcz\Course\Model\Config\Source\Teacher</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Teacher</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="source" xsi:type="string">moonstarcz_class</item>
+                    <item name="dataScope" xsi:type="string">teacher_id</item>
+                    <item name="sortOrder" xsi:type="number">80</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+    </fieldset>
+</form>

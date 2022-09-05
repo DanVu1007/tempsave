@@ -1,0 +1,9 @@
+.checkout-cart-index .cart-summary .block.shipping .title::after{
+    content: '\f055';
+    font-weight: 700;
+    color: #000;
+}
+
+.checkout-cart-index .cart-summary .block.shipping.active .title::after{
+    content: '\f056';
+}

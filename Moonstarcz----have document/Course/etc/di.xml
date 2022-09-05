@@ -1,0 +1,44 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<virtualType name="Moonstarcz\Course\Model\ResourceModel\MoonstarczClass\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">moonstarcz_class</argument>
+			<argument name="resourceModel" xsi:type="string">Moonstarcz\Course\Model\ResourceModel\MoonstarczClass\Collection</argument>
+		</arguments>
+	</virtualType>
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="moonstarcz_classroom_listing_data_source" xsi:type="string">Moonstarcz\Course\Model\ResourceModel\MoonstarczClass\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
+
+	<virtualType name="Moonstarcz\Course\Model\ResourceModel\MoonstarczDocument\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">moonstarcz_document</argument>
+			<argument name="resourceModel" xsi:type="string">Moonstarcz\Course\Model\ResourceModel\MoonstarczDocument\Collection</argument>
+		</arguments>
+	</virtualType>
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="moonstarcz_document_listing_data_source" xsi:type="string">Moonstarcz\Course\Model\ResourceModel\MoonstarczDocument\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
+
+	<virtualType name="Moonstarcz\Course\Model\ResourceModel\MoonstarczTeacher\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">moonstarcz_teacher</argument>
+			<argument name="resourceModel" xsi:type="string">Moonstarcz\Course\Model\ResourceModel\MoonstarczTeacher\Collection</argument>
+		</arguments>
+	</virtualType>
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="moonstarcz_teacher_listing_data_source" xsi:type="string">Moonstarcz\Course\Model\ResourceModel\MoonstarczTeacher\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
+</config>

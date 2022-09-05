@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+	<menu>
+		<add id="Moonstarcz_Course::classroom" title="Class Management" module="Moonstarcz_Course" sortOrder="10" resource="Moonstarcz_Course::classroom" parent="Moonstarcz_Core::core" action="moonstarcz/classroom/index"/>
+		<add id="Moonstarcz_Course::teacher" title="Teacher Management" module="Moonstarcz_Course" sortOrder="10" resource="Moonstarcz_Course::teacher" parent="Moonstarcz_Core::core" action="moonstarcz/teacher/index"/>
+	</menu>
+</config>

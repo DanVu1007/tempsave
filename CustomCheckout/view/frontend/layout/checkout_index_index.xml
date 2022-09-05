@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+		<css src="Gssi_CustomCheckout::css/font-awesome.min.css"/>
+        <css src="Gssi_CustomCheckout::css/custom-checkout-form.css"/>
+    </head>
+    <body>
+        <referenceContainer name="page.wrapper">
+            <container name="footernamma"  after="content">
+                <block class="Magento\Framework\View\Element\Template" name="checkout.onepage.new.footer" as="newCheckoutFooter" template="Gssi_CustomCheckout::onepage/footer.phtml"/>
+            </container>
+        </referenceContainer>
+    </body>
+</page>

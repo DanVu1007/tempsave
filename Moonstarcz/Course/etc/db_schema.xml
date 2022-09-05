@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="moonstarcz_class" resource="default" engine="innodb" comment="MoonstarCZ Class">
+        <column xsi:type="int" name="entity_id" unsigned="false" nullable="false" identity="true" comment="Entity Id"/>
+        <column xsi:type="int" name="status" unsigned="true" nullable="false" comment="Status"/>
+        <column xsi:type="varchar" name="name" nullable="false" length="255" comment="Name"/>
+        <column xsi:type="date" name="start_date" nullable="false" comment="Start Date"/>
+        <column xsi:type="date" name="end_date" nullable="true" comment="End Date"/>
+        <column xsi:type="varchar" name="start_time" nullable="false" length="255" comment="Start Time"/>
+        <column xsi:type="varchar" name="end_time" nullable="false" length="255" comment="End Time"/>
+        <column xsi:type="int" name="max_student" unsigned="true" nullable="false" comment="Max Student"/>
+        <column xsi:type="int" name="total_lesson" unsigned="true" nullable="false" comment="Total Lesson"/>
+        <column xsi:type="int" name="type_class" unsigned="true" nullable="false" comment="Type Class"/>
+        <column xsi:type="int" name="course_id" unsigned="true" nullable="false" comment="Course Id"/>
+        <column xsi:type="int" name="teacher_id" unsigned="true" nullable="false" comment="Teacher Id"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Created At"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Updated At"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+        <index referenceId="MOONSTARCZ_CLASS_COURSE_ID_INDEX" indexType="btree">
+            <column name="course_id"/>
+        </index>
+        <index referenceId="MOONSTARCZ_CLASS_TEACHER_ID_INDEX" indexType="btree">
+            <column name="teacher_id"/>
+        </index>
+        <constraint xsi:type="foreign" referenceId="MOONSTARCZ_CLASS_COURSE_ID_CAT_PRO_ENTITY_ID"
+                    table="moonstarcz_class" column="course_id" referenceTable="catalog_product_entity"
+                    referenceColumn="entity_id" onDelete="CASCADE"/>
+        <constraint xsi:type="foreign" referenceId="MOONSTARCZ_CLASS_TEACHER_ID_MS_TEACHER_ENTITY_ID"
+                    table="moonstarcz_class" column="teacher_id" referenceTable="moonstarcz_teacher"
+                    referenceColumn="entity_id" onDelete="CASCADE"/>
+    </table>
+
+    <table name="moonstarcz_teacher" resource="default" engine="innodb" comment="MoonstarCZ Document">
+        <column xsi:type="int" name="entity_id" padding="11"  unsigned="true" nullable="false" identity="true" comment="Entity Id"/>
+        <column xsi:type="int" name="status" unsigned="true" nullable="false" comment="Status"/>
+        <column xsi:type="varchar" name="name" nullable="false" length="255" comment="Name"/>
+        <column xsi:type="varchar" name="image" nullable="false" length="255" comment="Image"/>
+        <column xsi:type="int" name="gender" unsigned="true" nullable="true" comment="Gender"/>
+        <column xsi:type="int" name="age" unsigned="true" nullable="true" comment="Age"/>
+        <column xsi:type="text" name="description" nullable="false" comment="Description"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Created At"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Updated At"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+    </table>        
+
+    <table name="moonstarcz_document" resource="default" engine="innodb" comment="MoonstarCZ Document">
+        <column xsi:type="int" name="entity_id" padding="11"  unsigned="false" nullable="false" identity="true" comment="Entity Id"/>
+        <column xsi:type="int" name="status" unsigned="true" nullable="false" comment="Status"/>
+        <column xsi:type="int" name="type" unsigned="true" nullable="false" comment="Document Type"/>
+        <column xsi:type="varchar" name="name" nullable="false" length="255" comment="Name"/>
+        <column xsi:type="text" name="link" nullable="false" comment="Document Link"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Created At"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Updated At"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+    </table>
+
+    <table name="moonstarcz_course_document" resource="default" engine="innodb" comment="MoonstarCZ Course Document">
+        <column xsi:type="int" name="entity_id" unsigned="false" nullable="false" identity="true" comment="Entity Id"/>
+        <column xsi:type="int" name="document_id" padding="11" unsigned="false" nullable="true" comment="Document Id"/>
+        <column xsi:type="int" name="course_id" unsigned="true" nullable="false" comment="Course Id"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="MS_COURSE_DOCUMENT_COURSE_ID_CAT_PRO_ENTITY_ID"
+                    table="moonstarcz_course_document" column="course_id" referenceTable="catalog_product_entity"
+                    referenceColumn="entity_id" onDelete="CASCADE"/>
+        <constraint xsi:type="foreign" referenceId="MS_COURSE_DOCUMENT_DOCUMENT_ID_MS_DOCUMENT_ENTITY_ID"
+                    table="moonstarcz_course_document" column="document_id" referenceTable="moonstarcz_document"
+                    referenceColumn="entity_id" onDelete="CASCADE"/>
+    </table>
+</schema>

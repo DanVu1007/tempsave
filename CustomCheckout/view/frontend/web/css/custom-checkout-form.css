@@ -1,0 +1,38 @@
+:root {
+    --postcode-width: 160px;
+    --common-margin: 8px;
+}
+@media screen and (min-width: 768px) {
+    .fieldset.address{
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .field[name="shippingAddress.firstname"],
+    .field[name="shippingAddress.lastname"],
+    .field[name="shippingAddress.country_id"],
+    .field[name="shippingAddress.region_id"]{
+        width: calc(50% - var(--common-margin)/2);
+    }
+
+    .field[name="shippingAddress.lastname"],
+    .field[name="shippingAddress.region_id"]{
+        margin-left: var(--common-margin);
+    }
+
+    .field[name="shippingAddress.company"],
+    .field.street.admin__control-fields{
+        width: 100%;
+    }
+    
+    .field[name="shippingAddress.postcode"]{
+        width: var(--postcode-width);
+        margin-left: var(--common-margin);
+        margin-right: var(--common-margin);
+    }
+
+    .field[name="shippingAddress.city"],
+    .field[name="shippingAddress.telephone"]{
+        width: calc(50% - var(--postcode-width)/2 - var(--common-margin));
+    }
+}
