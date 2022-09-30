@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+	<menu>
+        <add id="Moonstarcz_Course::document" title="Document Management" module="Moonstarcz_Course" sortOrder="10" resource="Moonstarcz_Course::document" parent="Moonstarcz_Core::core" action="moonstar/document/index"/>
+	</menu>
+</config>

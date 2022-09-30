@@ -4,4 +4,3 @@
         <plugin name="storeview_witcher_language_currency" type="Moonstarcz\SwitchLanguage\Plugin\Switcher" />
     </type>
 </config>
-

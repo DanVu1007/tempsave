@@ -1,0 +1,15 @@
+<?php
+/** @var $block Moonstarcz\Document\Block\Document\View */
+$document = $block->getDocument();
+
+?>
+<?php if (!$document): ?>
+    <div class="message info empty">
+        <div><?= $block->escapeHtml(__('Document does not exist')) ?></div>
+    </div>
+<?php else: ?>
+    <div class="document">
+        <?php echo $block->getBlockContent($document)->toHtml() ?>
+    </div>
+
+<?php endif; ?>

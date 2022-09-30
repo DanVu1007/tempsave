@@ -1,0 +1,8 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="controller_action_catalog_product_save_entity_after">
+        <observer name="moonstar_save_product_classes" instance="Moonstarcz\ProductClass\Observer\Product\Save" />
+    </event>
+    <event name="catalog_product_delete_after_done">
+        <observer name="moonstar_delete_product" instance="Moonstarcz\ProductClass\Observer\Product\Delete" />
+    </event>
+</config>

@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="document" sortOrder="15" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+            <label>Document</label>
+            <tab>moonstarcz</tab>
+            <resource>Moonstarcz_Document::config_moonstarcz_document</resource>
+            <group id="view" sortOrder="10" showInWebsite="0" showInStore="0" showInDefault="1" translate="label">
+                <label>Document View</label>
+                <field id="width" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="1" >
+                    <label>Width</label>
+                </field>
+                <field id="height" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="1" >
+                    <label>Height</label>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

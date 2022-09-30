@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+
+    <table name="moonstarcz_document" resource="default" engine="innodb" comment="MoonstarCZ Document">
+        <column xsi:type="int" name="entity_id" padding="11"  unsigned="false" nullable="false" identity="true" comment="Entity Id"/>
+        <column xsi:type="int" name="status" unsigned="true" nullable="false" comment="Status"/>
+        <column xsi:type="int" name="type" unsigned="true" nullable="false" comment="Document Type"/>
+        <column xsi:type="varchar" name="name" nullable="false" length="255" comment="Name"/>
+        <column xsi:type="varchar" name="filename" nullable="false" length="255" comment="File Name"/>
+        <column xsi:type="varchar" name="extension" nullable="false" length="255" comment="Extension"/>
+        <column xsi:type="varchar" name="file_path" nullable="true" length="255" comment="File Path"/>
+        <column xsi:type="varchar" name="gg_file_id" nullable="true" length="255" comment="Drive Id"/>
+        <column xsi:type="text" name="description" nullable="true" comment="Description"/>
+        <column xsi:type="text" name="link" nullable="true" comment="Document Link" disabled="true"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Created At"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Updated At"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+    </table>
+
+    <table name="moonstarcz_course_document" resource="default" engine="innodb" comment="MoonstarCZ Course Document">
+        <column xsi:type="int" name="entity_id" unsigned="false" nullable="false" identity="true" comment="Entity Id"/>
+        <column xsi:type="int" name="document_id" padding="11" unsigned="false" nullable="true" comment="Document Id"/>
+        <column xsi:type="int" name="course_id" unsigned="true" nullable="false" comment="Course Id"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="MS_COURSE_DOCUMENT_COURSE_ID_CAT_PRO_ENTITY_ID"
+                    table="moonstarcz_course_document" column="course_id" referenceTable="catalog_product_entity"
+                    referenceColumn="entity_id" onDelete="CASCADE"/>
+        <constraint xsi:type="foreign" referenceId="MS_COURSE_DOCUMENT_DOCUMENT_ID_MS_DOCUMENT_ENTITY_ID"
+                    table="moonstarcz_course_document" column="document_id" referenceTable="moonstarcz_document"
+                    referenceColumn="entity_id" onDelete="CASCADE"/>
+    </table>
+</schema>

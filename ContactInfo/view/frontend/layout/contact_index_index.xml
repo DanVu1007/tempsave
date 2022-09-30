@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <referenceBlock name="google_map" remove="true"/>
+            <block class="Moonstarcz\ContactInfo\Block\GetContactInfo" name="google_map_custom" template="Moonstarcz_ContactInfo::google_map.phtml" before="-"/>
+        </referenceContainer>
+    </body>
+</page>

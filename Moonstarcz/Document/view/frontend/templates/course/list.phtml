@@ -1,0 +1,35 @@
+<?php
+/** @var $block Moonstarcz\Document\Block\Course\ListCourse */
+/** @var $escaper \Magento\Framework\Escaper */
+
+$courses = $block->getCourses();
+?>
+<?php if (!$courses->getSize()): ?>
+    <div class="message info empty">
+        <div><?= $block->escapeHtml(__('You have not registered for any courses yet.')) ?></div>
+    </div>
+<?php else: ?>
+    <div class="list-courses">
+        <?php foreach ($courses as $course): ?>
+            <div class="course-info">
+                <div class="course-image">
+                    <img src="<?= $block->getCourseImage($course)->getImageUrl() ?>" alt="<?= $escaper->escapeHtml($course->getName()) ?>">
+                </div>
+                <div class="course-detail">
+                    <strong class="course-name"><?= $course->getName() ?></strong>
+                    <div class="course-type">
+                        <span>Primary</span>
+                        <span>En</span>
+                    </div>
+                    <div class="course-short-description">
+                        <?= $course->getShortDescription() ?>
+                    </div>
+                    <a href="<?= $escaper->escapeUrl($block->getViewDocumentUrl($course->getId()))  ?>" alt="<?= $escaper->escapeHtmlAttr(__('View Document')) ?>">
+                        <?= $escaper->escapeHtmlAttr(__('View Document')) ?>
+                    </a>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+
+<?php endif; ?>

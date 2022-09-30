@@ -2,9 +2,13 @@
 
 namespace Moonstarcz\SwitchLanguage\Plugin;
 
+use Magento\Framework\App\Http\Context as HttpContext;
 use Magento\Framework\App\State;
 use Magento\Framework\HTTP\PhpEnvironment\RemoteAddress;
 use Magento\Framework\TranslateInterface;
+use Magento\Store\Api\StoreCookieManagerInterface;
+use Magento\Store\Api\StoreRepositoryInterface;
+use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
 use MageWorx\GeoIP\Model\Geoip;
 
@@ -46,43 +50,40 @@ class Switcher
         StoreManagerInterface $storeManager,
         \MageWorx\GeoIP\Model\GeoipFactory $geoIp,
         TranslateInterface $translate,
+        StoreCookieManagerInterface $storeCookieManager,
+        StoreRepositoryInterface $storeRepository,
+        HttpContext $httpContext,
         State $state
     ) {
         $this->remoteAddress = $remoteAddress;
+        $this->httpContext = $httpContext;
         $this->storeManager = $storeManager;
         $this->geoIp = $geoIp;
         $this->_translate = $translate;
         $this->state = $state;
+        $this->storeRepository = $storeRepository;
+        $this->storeCookieManager = $storeCookieManager;
     }
     public function beforeDispatch()
     {
         $ipAddress = $this->remoteAddress->getRemoteAddress();
-        //TEST IP CZECH
-        $ipAddress = '5.59.255.255';
-        //TEST IP VIETNAM
-//        $ipAddress = '222.252.27.212';
         $geoIp = $this->geoIp->create();
         $countryCode = $geoIp->getLocation($ipAddress)->getCode();
 
         $areaCode = $this->state->getAreaCode();
         if ($areaCode == self::FRONTEND_AREA) {
             if (isset($countryCode) && $countryCode == self::VIETNAM_COUNTRY_CODE) {
-                $this->setViLocale();
+                $this->setStoreView(self::VN_STORE_CODE);
             } else {
-                $this->setCzLocale();
+                $this->setStoreView(self::CZ_STORE_CODE);
             }
         }
     }
 
-    private function setViLocale()
+    public function setStoreView($storeView)
     {
-        $this->_translate->setLocale(self::VI_LOCALE);
-//        $this->storeManager->setCurrentStore(self::VN_STORE_CODE);
-    }
-
-    private function setCzLocale()
-    {
-        $this->_translate->setLocale(self::CZ_LOCALE);
-//        $this->storeManager->setCurrentStore(self::CZ_STORE_CODE);
+        $store = $this->storeRepository->getActiveStoreByCode($storeView);
+        $this->httpContext->setValue(Store::ENTITY, $storeView, 'DEFAULT_STORE_CODE');
+        $this->storeCookieManager->setStoreCookie($store);
     }
 }

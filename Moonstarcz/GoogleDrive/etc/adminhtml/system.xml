@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="google_drive" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+            <label>Google Drive</label>
+            <tab>moonstarcz</tab>
+            <resource>Moonstarcz_GoogleDrive::config_moonstarcz_googledrive</resource>
+            <group id="general" sortOrder="10" showInWebsite="0" showInStore="0" showInDefault="1" translate="label">
+                <label>General</label>
+                <field id="service_account_key" translate="label" type="Magento\Config\Block\System\Config\Form\Field\File" sortOrder="6" showInDefault="1" showInWebsite="1" >
+                    <label>Service Account Key</label>
+                    <backend_model>Moonstarcz\GoogleDrive\Model\Config\Backend\File</backend_model>
+                    <upload_dir config="system" scope_info="1">moonstar</upload_dir>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

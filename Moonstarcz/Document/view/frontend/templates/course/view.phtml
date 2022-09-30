@@ -1,0 +1,46 @@
+<?php
+/** @var $block Moonstarcz\Document\Block\Course\View */
+/** @var $escaper \Magento\Framework\Escaper */
+
+$documents = $block->getDocuments();
+?>
+<?php if (!$documents->getSize()): ?>
+    <div class="message info empty">
+        <div><?= $block->escapeHtml(__('You have not registered for any document yet.')) ?></div>
+    </div>
+<?php else: ?>
+    <div class="document-filter">
+        <select class="filters">
+            <option value="pdf"><?= __('All Documents') ?> </option>
+            <option value="pdf"><?= __('PDF Document') ?> </option>
+            <option value="video"><?= __('Video lectures') ?> </option>
+        </select>
+    </div>
+    <a href="" ></a>
+    <div class="documents">
+        <?php foreach ($documents as $document): ?>
+            <div class="document-info">
+                <div class="document-image">
+                    <a href="<?= $escaper->escapeUrl($block->getDocumentViewUrl($document->getId())) ?>">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Meow_cat_-_Mdebona.jpg" width="400" alt="">
+                    </a>
+
+                </div>
+                <div class="document-name">
+                    <a href="<?= $escaper->escapeUrl($block->getDocumentViewUrl($document->getId())) ?>">
+                        <?= $escaper->escapeHtml($document->getName()) ?>
+                    </a>
+                </div>
+                <div class="document-type">
+                    <span><?= $escaper->escapeHtml($block->getDocumentTag($document->getExtension())) ?></span>
+                </div>
+                <div class="document-description">
+                    <span><?= $document->getDescription() ?></span>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+    <?php if ($block->getPagerHtml()): ?>
+        <div class="order-products-toolbar toolbar bottom"><?php echo $block->getPagerHtml(); ?></div>
+    <?php endif ?>
+<?php endif; ?>

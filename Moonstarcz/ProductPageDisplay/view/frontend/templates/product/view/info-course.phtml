@@ -1,0 +1,54 @@
+<?php
+/** @var Moonstarcz\ProductPageDisplay\Block\Product\ShowInfoCourse $block */
+
+$showDate = $block->displayDate();
+$showTime = $block->displayTime();
+$infoClasses = $block->getClassSelection();
+?>
+<?php if ($showDate && $showTime) : ?>
+    <div class="detail-course">
+        <h5><?= __('Course Infomation') ?></h5>
+        <ul>
+            <li>
+                <span> <?= __('Estimated times: %1', $showDate)  ?></span>
+            </li>
+            <li>
+                <span>
+                    <?= __('Estimated durations: %1 courses %2 minutes ', $showTime['total_lesson'], $showTime['lesson_time']) ?>
+                </span>
+            </li>
+        </ul>
+    </div>
+<?php endif; ?>
+
+<?php if ($infoClasses) : ?>
+    <div class="select-time-course">
+        <h5><?= __('Study time') ?></h5>
+        <form id="select-moonstar-class" method="post">
+            <ul>
+                <?php foreach ($infoClasses as $infoClass) : ?>
+                    <li>
+                        <input  type="radio"
+                                name="class_id"
+                                class="<?= $infoClass['status_class'] ?>"
+                                <?= ($infoClass['status_class'] == 'full100') ? 'disabled' : '' ?>
+                                value="<?= $infoClass['value'] ?>"
+                        />
+                        <label for="select time">
+                            <?= $infoClass['show_class_time'] ?>
+                            <span class="number-of-student">
+                                <?= $infoClass['number_of_student'] ?>/<?= $infoClass['max_student'] ?>
+                                <?= __('Register') ?>
+                            </span>
+                        </label>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        </form>
+    </div>
+<?php endif; ?>
+<script>
+    require(['jquery', 'formCart'], function($, formCart) {
+        formCart();
+    });
+</script>

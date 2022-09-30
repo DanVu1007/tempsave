@@ -1,0 +1,69 @@
+{
+    "moonstarcz_class": {
+        "column": {
+            "entity_id": true,
+            "status": true,
+            "name": true,
+            "start_date": true,
+            "end_date": true,
+            "start_time": true,
+            "end_time": true,
+            "max_student": true,
+            "total_lesson": true,
+            "type_class": true,
+            "course_id": true,
+            "teacher_id": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "index": {
+            "MOONSTARCZ_CLASS_TEACHER_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "MOONSTARCZ_CLASS_TEACHER_ID_MOONSTARCZ_TEACHER_ENTITY_ID": true
+        }
+    },
+    "moonstarcz_teacher": {
+        "column": {
+            "entity_id": true,
+            "status": true,
+            "name": true,
+            "image": true,
+            "gender": true,
+            "age": true,
+            "description": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "moonstarcz_document": {
+        "column": {
+            "entity_id": true,
+            "status": true,
+            "type": true,
+            "name": true,
+            "link": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "moonstarcz_course_document": {
+        "column": {
+            "entity_id": true,
+            "document_id": true,
+            "course_id": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "MOONSTARCZ_COURSE_DOCUMENT_COURSE_ID_CAT_PRD_ENTT_ENTT_ID": true,
+            "FK_EFC95DCA8BAE64F5FAB5A65E4CE5C9BB": true
+        }
+    }
+}

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="moonstarcz_customer_class" resource="default" engine="innodb" comment="MoonstarCZ Customer Class">
+        <column xsi:type="int" name="entity_id" unsigned="false" nullable="false" identity="true" comment="Entity Id"/>
+        <column xsi:type="int" name="customer_id" padding="11" unsigned="false" nullable="true" comment="Customer Id"/>
+        <column xsi:type="int" name="class_id" unsigned="true" nullable="false" comment="Class Id"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+    </table>
+</schema>

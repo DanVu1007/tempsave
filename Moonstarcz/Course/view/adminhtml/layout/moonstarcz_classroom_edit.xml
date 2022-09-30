@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <head>
-        <script src="Moonstarcz_Course::js/custom-validate.js"/>
+        <script src="Moonstarcz_Course::js/custom-validate2.js"/>
     </head>
     <body>
         <referenceContainer name="content">

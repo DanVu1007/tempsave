@@ -1,0 +1,42 @@
+<?php
+/** @var \Moonstarcz\ContactInfo\Block\GetContactInfo $block */
+$info =  $block->getInfoStore();
+$infoVN = $info['store_vn_info'];
+$infoCZ = $info['store_cz_info'];
+?>
+
+<div class="content-contact-top">
+    <?php
+        echo $this->getLayout()
+            ->createBlock(\Magento\Cms\Block\Block::class)
+            ->setBlockId('block-contact')
+            ->toHtml();
+    ?>
+</div>
+<fieldset class="fieldset">
+    <div class="contact-map">
+        <div class="contact-address">
+            <div class="content-address address-1 active">
+                <span class="branch-name"><?= __($infoVN['store_name']) ?></span>
+                <span class="branch-address"><?= __($infoVN['store_address']) ?></span>
+                <span class="branch-phone"><?= __($infoVN['store_phone']) ?></span>
+                <div class="button-contact"><a href="#"><span><?= __('Liên hệ ngay') ?></span></a></div>
+            </div>
+            <div class="content-address address-2">
+                <span class="branch-name"><?= __($infoCZ['store_name']) ?></span>
+                <span class="branch-address"><?= __($infoCZ['store_address']) ?></span>
+                <span class="branch-phone"><?= __($infoCZ['store_phone']) ?></span>
+                <div class="button-contact"><a href="#"><span><?= __('Liên hệ ngay') ?></span></a></div>
+            </div>
+        </div>
+        <div class="map-image">
+            <div class="map-1 active">
+                <img src="<?= $infoVN['store_image'] ?>" alt="">
+            </div>
+             <div class="map-2">
+                <img src="<?= $infoCZ['store_image'] ?>" alt="">
+            </div>
+        </div>
+    </div>
+</fieldset>
+

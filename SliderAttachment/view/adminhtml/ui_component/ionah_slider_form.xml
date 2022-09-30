@@ -1,0 +1,224 @@
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <fieldset name="fieldset_images">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">Image of Slider</item>
+                <item name="additionalClasses" xsi:type="string">admin__fieldset-section</item>
+                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="sortOrder" xsi:type="number">100</item>
+                <item name="opened" xsi:type="boolean">false</item>
+            </item>
+        </argument>
+
+        <container name="images">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="additionalClasses" xsi:type="string">admin__field-wide inoah-class-rows inoah-dynamic-rows</item>
+                    <item name="componentType" xsi:type="string">dynamicRows</item>
+                    <item name="component" xsi:type="string">Ionah_SliderAttachment/js/dynamic-rows/dynamic-rows-grid</item>
+                    <item name="template" xsi:type="string">ui/dynamic-rows/templates/grid</item>
+                    <item name="recordTemplate" xsi:type="string">record</item>
+                    <item name="addButton" xsi:type="boolean">false</item>
+                    <item name="columnsHeader" xsi:type="boolean">false</item>
+                    <item name="columnsHeaderAfterRender" xsi:type="boolean">true</item>
+                    <item name="renderDefaultRecord" xsi:type="boolean">false</item>
+                    <item name="dataScope" xsi:type="string">data.fieldset_images</item>
+                    <item name="deleteButtonLabel" xsi:type="string" translate="true">Remove</item>
+                    <item name="identificationProperty" xsi:type="string">entity_id</item>
+                    <item name="identificationDRProperty" xsi:type="string">entity_id</item>
+                    <item name="dataProvider" xsi:type="string">data.images</item>
+                    <item name="map" xsi:type="array">
+                        <item name="entity_id" xsi:type="string">entity_id</item>
+                        <item name="name" xsi:type="string">name</item>
+                        <item name="title" xsi:type="string">title</item>
+                        <item name="link" xsi:type="string">link</item>
+                        <item name="image" xsi:type="string">image</item>
+                        <item name="not_removable" xsi:type="string">not_removable</item>
+                    </item>
+                    <item name="links" xsi:type="array">
+                        <item name="insertData" xsi:type="string">${ $.provider }:${ $.dataProvider }</item>
+                    </item>
+                    <item name="dndConfig" xsi:type="array">
+                        <item name="enabled" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+
+            <container name="record">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="isTemplate" xsi:type="boolean">true</item>
+                        <item name="is_collection" xsi:type="boolean">true</item>
+                        <item name="component" xsi:type="string">Magento_Ui/js/dynamic-rows/record</item>
+                    </item>
+                </argument>
+                <field name="entity_id">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="fit" xsi:type="boolean">true</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="elementTmpl" xsi:type="string">ui/dynamic-rows/cells/text</item>
+                            <item name="component" xsi:type="string">Magento_Ui/js/form/element/text</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="dataScope" xsi:type="string">entity_id</item>
+                            <item name="label" xsi:type="string" translate="true">ID</item>
+                            <item name="sortOrder" xsi:type="string">10</item>
+                        </item>
+                    </argument>
+                </field>
+                <!-- <field name="name">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="fit" xsi:type="boolean">true</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="elementTmpl" xsi:type="string">ui/dynamic-rows/cells/text</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="dataScope" xsi:type="string">name</item>
+                            <item name="label" xsi:type="string" translate="true">Name</item>
+                            <item name="sortOrder" xsi:type="string">20</item>
+                        </item>
+                    </argument>
+                </field> -->
+                <field name="title">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="fit" xsi:type="boolean">true</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="elementTmpl" xsi:type="string">ui/dynamic-rows/cells/text</item>
+                            <item name="component" xsi:type="string">Magento_Ui/js/form/element/text</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="dataScope" xsi:type="string">title</item>
+                            <item name="label" xsi:type="string" translate="true">Title</item>
+                            <item name="sortOrder" xsi:type="string">30</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="link">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="fit" xsi:type="boolean">true</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="elementTmpl" xsi:type="string">ui/dynamic-rows/cells/text</item>
+                            <item name="component" xsi:type="string">Magento_Ui/js/form/element/text</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="dataScope" xsi:type="string">link</item>
+                            <item name="label" xsi:type="string" translate="true">Link</item>
+                            <item name="sortOrder" xsi:type="string">40</item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="image">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="fit" xsi:type="boolean">true</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="elementTmpl" xsi:type="string">ui/dynamic-rows/cells/text</item>
+                            <item name="component" xsi:type="string">Magento_Ui/js/form/element/text</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="dataScope" xsi:type="string">image</item>
+                            <item name="label" xsi:type="string" translate="true">Image</item>
+                            <item name="sortOrder" xsi:type="string">50</item>
+                        </item>
+                    </argument>
+                </field>
+                <actionDelete name="actionDelete">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="fit" xsi:type="boolean">true</item>
+                            <item name="additionalClasses" xsi:type="string">data-grid-actions-cell</item>
+                            <item name="component" xsi:type="string">Ionah_SliderAttachment/js/dynamic-rows/element/delete-action</item>
+                            <item name="template" xsi:type="string">Ionah_SliderAttachment/dynamic-rows/cells/delete-action</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="label" xsi:type="string" translate="true">Actions</item>
+                            <item name="sortOrder" xsi:type="string">90</item>
+                        </item>
+                    </argument>
+                </actionDelete>
+            </container>
+        </container>
+
+        <container name="button_set">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="boolean">false</item>
+                    <item name="content" xsi:type="string" translate="true">Images included in the course will be shown to customers.</item>
+                    <item name="template" xsi:type="string">ui/form/components/complex</item>
+                </item>
+            </argument>
+            <container name="button_class">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="title" xsi:type="string" translate="true">Assign Images for Slider</item>
+                        <item name="component" xsi:type="string">Magento_Ui/js/form/components/button</item>
+                        <item name="actions" xsi:type="array">
+                            <item name="0" xsi:type="array">
+                                <item name="targetName" xsi:type="string">ionah_slider_form.ionah_slider_form.fieldset_images.modal</item>
+                                <item name="actionName" xsi:type="string">toggleModal</item>
+                            </item>
+                            <item name="1" xsi:type="array">
+                                <item name="targetName" xsi:type="string">index = ionah_slider_form_images_listing</item>
+                                <item name="actionName" xsi:type="string">render</item>
+                            </item>
+                        </item>
+                    </item>
+                </argument>
+            </container>
+        </container>
+
+        <modal name="modal">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Magento_Ui/js/modal/modal-component</item>
+                    <item name="options" xsi:type="array">
+                        <item name="title" xsi:type="string" translate="true">Assign Images for Slider</item>
+                        <item name="buttons" xsi:type="array">
+                            <item name="0" xsi:type="array">
+                                <item name="text" xsi:type="string" translate="true">Cancel</item>
+                                <item name="actions" xsi:type="array">
+                                    <item name="0" xsi:type="string">closeModal</item>
+                                </item>
+                            </item>
+                            <item name="1" xsi:type="array">
+                                <item name="text" xsi:type="string" translate="true">Add Selected Images</item>
+                                <item name="class" xsi:type="string">action-primary</item>
+                                <item name="actions" xsi:type="array">
+                                    <item name="0" xsi:type="array">
+                                        <item name="targetName" xsi:type="string">index = ionah_slider_form_images_listing</item>
+                                        <item name="actionName" xsi:type="string">save</item>
+                                    </item>
+                                    <item name="1" xsi:type="string">closeModal</item>
+                                </item>
+                            </item>
+                        </item>
+                    </item>
+                </item>
+            </argument>
+            <insertListing name="ionah_slider_form_images_listing">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="autoRender" xsi:type="boolean">false</item>
+                        <item name="dataScope" xsi:type="string">data.images</item>
+                        <item name="externalProvider" xsi:type="string">ionah_slider_form_images_listing.ionah_slider_form_images_listing_data_source</item>
+                        <item name="selectionsProvider" xsi:type="string">ionah_slider_form_images_listing.ionah_slider_form_images_listing.columns.ids</item>
+                        <item name="ns" xsi:type="string">ionah_slider_form_images_listing</item>
+                        <item name="render_url" xsi:type="url" path="mui/index/render"/>
+                        <item name="realTimeLink" xsi:type="boolean">true</item>
+                        <item name="dataLinks" xsi:type="array">
+                            <item name="imports" xsi:type="boolean">false</item>
+                            <item name="exports" xsi:type="boolean">true</item>
+                        </item>
+                        <item name="behaviourType" xsi:type="string">simple</item>
+                        <item name="externalFilterMode" xsi:type="boolean">true</item>
+                        <item name="imports" xsi:type="array">
+                            <item name="entity_id" xsi:type="string">${ $.provider }:data.entity_id</item>
+                        </item>
+                        <item name="exports" xsi:type="array">
+                            <item name="entity_id" xsi:type="string">${ $.externalProvider }:data.entity_id</item>
+                        </item>
+                        <item name="component" xsi:type="string">Magento_Ui/js/form/components/insert-listing</item>
+                    </item>
+                </argument>
+            </insertListing>
+        </modal>
+    </fieldset>
+</form>
